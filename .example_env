@@ -1,0 +1,7 @@
+DB_USERNAME = username
+DB_HOST = hostname
+DB_DATABASE = dbname
+DB_PASSWORD = dbpassword
+DB_PORT = dbport
+
+PORT = backendport
