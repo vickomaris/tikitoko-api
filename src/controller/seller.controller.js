@@ -136,6 +136,28 @@ const sellerController = {
       next(new createError.InternalServerError());
     }
   },
+
+  deleteStore: async (req, res, next) => {
+    try {
+      const {id} = req.params
+
+      const {
+        rows: [seller],
+      } = await sellerModel.getDetail(id);
+
+      delete seller.password;
+
+      await sellerModel.deleteStore(id)
+
+      res.json({
+        msg: "Delete Seller success",
+        data: seller
+      })
+    } catch (error) {
+      console.log(error)
+      next(new createError.InternalServerError())
+    }
+  }
 };
 
 module.exports = sellerController;
