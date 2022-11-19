@@ -21,7 +21,7 @@ router
 .use("/seller", sellerRoutes)
 
 // app
-// .use("/category", categoryRoutes)
+.use("/category", categoryRoutes)
 // .use("/product", productRoutes)
 // .use("/cart", cartRoutes)
 // .use("/order", orderRoutes)
