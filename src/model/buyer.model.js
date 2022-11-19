@@ -45,6 +45,10 @@ const buyerModel = {
       ]
     );
   },
+
+  deleteAccount: (id) => {
+    return pool.query(`DELETE FROM buyer WHERE buyer_id = $1`, [id])
+  }
 };
 
 module.exports = buyerModel;

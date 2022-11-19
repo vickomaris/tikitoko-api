@@ -135,6 +135,28 @@ const buyerController = {
       next(new createError.InternalServerError());
     }
   },
+
+  deleteAccount: async (req, res, next) => {
+    try {
+      const {id} = req.params
+
+      const {
+        rows: [buyer],
+      } = await buyerModel.getDetail(id);
+
+      delete buyer.password;
+
+      await buyerModel.deleteAccount(id)
+
+      res.json({
+        msg: "Delete Buyer success",
+        data: buyer
+      })
+    } catch (error) {
+      console.log(error)
+      next(new createError.InternalServerError())
+    }
+  }
 };
 
 module.exports = buyerController;
