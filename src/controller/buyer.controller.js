@@ -3,6 +3,7 @@ const buyerModel = require("../model/buyer.model");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
+const generateToken = require("../helper/auth.helper");
 
 const buyerController = {
   // auth
@@ -65,9 +66,14 @@ const buyerController = {
 
       delete buyer.password;
 
+      const token = generateToken({
+        id: buyer.buyer_id,
+        name: buyer.name,
+      });
+
       res.json({
         msg: "Login success",
-        data: buyer,
+        data: {token, buyer},
       });
     } catch (error) {
       console.log(error);
