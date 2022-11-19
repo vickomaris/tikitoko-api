@@ -1,12 +1,12 @@
 const express = require("express");
-const { register, login } = require("../controller/seller.controller");
+const { register, login, getDetail } = require("../controller/seller.controller");
 const router = express.Router();
 
 router
 .post("/register", register)
 .post("/login", login)
-// .get
-// .put
-// .delete
+.get("/:id", getDetail)
+// .put("/:id", updateStore)
+// .delete("/:id", deleteStore)
 
 module.exports = router
