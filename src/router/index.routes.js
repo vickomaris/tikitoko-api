@@ -22,7 +22,7 @@ router
 
 // app
 .use("/category", categoryRoutes)
-// .use("/product", productRoutes)
+.use("/product", productRoutes)
 // .use("/cart", cartRoutes)
 // .use("/order", orderRoutes)
 // .use("/address", addressRoutes)
