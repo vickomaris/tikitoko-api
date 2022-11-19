@@ -19,7 +19,7 @@ CREATE TABLE seller (
     name VARCHAR(32) NOT NULL,
     description VARCHAR,
     email VARCHAR(128) NOT NULL UNIQUE,
-    phone VARCHAR(16),
+    phone VARCHAR(16) NOT NULL,
     password VARCHAR(64) NOT NULL,
     avatar VARCHAR(256),
     status INTEGER DEFAULT 0,
