@@ -96,6 +96,46 @@ const sellerController = {
       next(new createError.InternalServerError());
     }
   },
+
+  updateStore: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const { name, email, phone, description } = req.body;
+      const date = new Date();
+      let avatar = null;
+
+      if (req.file) {
+        avatar = `http://${req.get("host")}/ava/${req.file.filename}`;
+      }
+
+      const data = {
+        id,
+        name,
+        email,
+        phone,
+        description,
+        avatar,
+        date,
+      };
+
+      await sellerModel.updateStore(data);
+
+      const {
+        rows: [seller],
+      } = await sellerModel.getDetail(id);
+
+      delete seller.password;
+
+      res.json({
+        msg: "Update Seller success",
+        data: seller
+      })
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
 };
 
 module.exports = sellerController;
