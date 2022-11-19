@@ -3,6 +3,7 @@ const sellerModel = require("../model/seller.model");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
+const generateToken = require("../helper/auth.helper");
 
 const sellerController = {
   // auth
@@ -66,9 +67,14 @@ const sellerController = {
 
       delete seller.password;
 
+      const token = generateToken({
+        id: seller.seller_id,
+        name: seller.name,
+      });
+
       res.json({
         msg: "Login success",
-        data: seller,
+        data: {token, seller},
       });
     } catch (error) {
       console.log(error);

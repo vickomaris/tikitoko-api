@@ -45,7 +45,7 @@ CREATE TABLE category (
 
 CREATE TABLE product (
     product_id UUID PRIMARY KEY,
-    category_id UUID REFERENCES category(category_id),
+    category_id INTEGER REFERENCES category(category_id),
     seller_id UUID REFERENCES seller(seller_id),
     name VARCHAR(32) NOT NULL,
     price INTEGER NOT NULL,
