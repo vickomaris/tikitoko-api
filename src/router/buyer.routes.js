@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const { register, login } = require("../controller/buyer.controller");
+const { register, login, getDetail, updateAccount } = require("../controller/buyer.controller");
+const { userUpload } = require("../middleware/multer.middleware");
 
 router
 .post("/register", register)
 .post("/login", login)
-// .get
-// .put
+.get("/:id", getDetail)
+.put("/:id", userUpload.single("avatar"), updateAccount)
 // .delete
 
 module.exports = router

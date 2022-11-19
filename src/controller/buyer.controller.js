@@ -5,6 +5,7 @@ const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
 
 const buyerController = {
+  // auth
   register: async (req, res, next) => {
     try {
       const id = uuid();
@@ -68,6 +69,67 @@ const buyerController = {
         msg: "Login success",
         data: buyer,
       });
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
+  getDetail: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const {
+        rows: [buyer],
+      } = await buyerModel.getDetail(id);
+
+      delete buyer.password;
+
+      res.json({
+        msg: "Get Buyer Detail success",
+        data: buyer,
+      });
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
+  updateAccount: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const { name, email, phone, gender, birthdate } = req.body;
+      const date = new Date();
+      let avatar = null;
+
+      if (req.file) {
+        avatar = `http://${req.get("host")}/ava/${req.file.filename}`;
+      }
+
+      const data = {
+        id,
+        name,
+        email,
+        phone,
+        gender,
+        birthdate,
+        avatar,
+        date,
+      };
+
+      await buyerModel.updateAccount(data);
+
+      const {
+        rows: [buyer],
+      } = await buyerModel.getDetail(id);
+
+      delete buyer.password;
+
+      res.json({
+        msg: "Update Buyer success",
+        data: buyer
+      })
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
