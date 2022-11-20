@@ -41,10 +41,43 @@ const productController = {
 
   getProduct: async (req, res, next) => {
     try {
-      const { rows: product } = await productModel.getProduct();
+      const category = req.query.category || "";
+      const seller = req.query.seller || "";
+      const search = req.query.search || "";
+      const sortBy = req.query.sortby || "product_id";
+      const sortOrder = req.query.order || "asc";
+
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 6;
+      const offset = (page - 1) * limit;
+
+      const {
+        rows: [count],
+      } = await productModel.countProduct();
+
+      const totalData = parseInt(count.total);
+      const totalPage = Math.ceil(totalData / limit);
+
+      const pagination = {
+        currentPage: page,
+        limit,
+        totalData,
+        totalPage,
+      };
+
+      const { rows: product } = await productModel.getProduct(
+        category,
+        seller,
+        search,
+        sortBy,
+        sortOrder,
+        limit,
+        offset
+      );
 
       res.json({
         msg: "Get Product success",
+        pagination,
         data: product,
       });
     } catch (error) {

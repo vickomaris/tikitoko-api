@@ -21,8 +21,37 @@ const productModel = {
     );
   },
 
-  getProduct: () => {
-    return pool.query(`SELECT * FROM product`);
+  getProduct: (category, seller, search, sortBy, sortOrder, limit, offset) => {
+    let query = {
+      text: `
+      SELECT seller.name AS seller_name, product.* FROM product JOIN seller using (seller_id)
+      WHERE product.name ILIKE '%${search}%' AND seller.name ILIKE '%${seller}%'
+      `,
+    };
+
+    if (category) {
+      query.text = query.text + " " + `AND category_id = ${category}`;
+    }
+
+    query.text =
+      query.text +
+      " " +
+      `ORDER BY ${sortBy} ${sortOrder} LIMIT ${limit} OFFSET ${offset}`;
+
+    return pool.query(query);
+  },
+
+  // getProduct: (search, limit, offset) => {
+  //   return pool.query(`
+  //   SELECT seller.name AS seller_name, product.*
+  //   FROM product JOIN seller using (seller_id)
+  //   WHERE product.name ILIKE '%${search}%' AND category_id = ${category}
+  //   LIMIT ${limit} OFFSET ${offset}
+  //   `);
+  // },
+
+  countProduct: () => {
+    return pool.query(`SELECT COUNT(*) AS total FROM product`);
   },
 
   getProductDetail: (id) => {
