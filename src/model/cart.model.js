@@ -12,11 +12,22 @@ const cartModel = {
   },
 
   getCart: (id) => {
-    return pool.query(`SELECT * FROM cart WHERE buyer_id = $1`, [id]);
+    return pool.query(
+      `
+    SELECT seller.name AS seller_name, product.name, product.price, product.image, cart.*
+    FROM cart JOIN (product JOIN seller USING (seller_id)) USING (product_id)
+    WHERE buyer_id = $1
+    `,
+      [id]
+    );
   },
 
   getCartDetail: (id) => {
-    return pool.query(`SELECT * FROM cart WHERE cart_id = $1`, [id]);
+    return pool.query(`
+    SELECT seller.name AS seller_name, product.name, product.price, product.image, cart.*
+    FROM cart JOIN (product JOIN seller USING (seller_id)) USING (product_id)
+    WHERE cart_id = $1
+    `, [id]);
   },
 
   updateCart: (data) => {

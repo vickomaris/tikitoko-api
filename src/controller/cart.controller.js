@@ -21,9 +21,12 @@ const cartController = {
 
       await cartModel.insertCart(data);
 
+      const {rows : [cart]} = await cartModel.getCartDetail(id)
+
+
       res.json({
         msg: "Insert Cart success",
-        data: data,
+        data: cart,
       });
     } catch (error) {
       console.log(error);
