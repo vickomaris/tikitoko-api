@@ -25,7 +25,7 @@ router
 .use("/product", productRoutes)
 .use("/cart", cartRoutes)
 // .use("/order", orderRoutes)
-// .use("/address", addressRoutes)
+.use("/address", addressRoutes)
 
 // chat
 // .use("/message", messageRoutes)
