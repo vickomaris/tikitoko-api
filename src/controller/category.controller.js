@@ -1,5 +1,6 @@
 const categoryModel = require("../model/category.model");
 
+const response = require("../helper/response.helper");
 const createError = require("http-errors");
 
 const categoryController = {
@@ -19,10 +20,7 @@ const categoryController = {
 
       await categoryModel.insertCategory(data);
 
-      res.json({
-        msg: "Insert Category success",
-        data: data,
-      });
+      response(res, data, 200, "Insert Category success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -33,10 +31,7 @@ const categoryController = {
     try {
       const { rows: categories } = await categoryModel.getCategory();
 
-      res.json({
-        msg: "Get Category success",
-        data: categories,
-      });
+      response(res, categories, 200, "Get Category success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -51,10 +46,7 @@ const categoryController = {
         rows: [category],
       } = await categoryModel.getCategoryDetail(id);
 
-      res.json({
-        msg: "Get Category success",
-        data: category,
-      });
+      response(res, category, 200, "Get Category Detail success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -83,10 +75,7 @@ const categoryController = {
         rows: [category],
       } = await categoryModel.getCategoryDetail(id);
 
-      res.json({
-        msg: "Update Category success",
-        data: category,
-      });
+      response(res, category, 200, "Update Category success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -103,10 +92,7 @@ const categoryController = {
 
       await categoryModel.deleteCategory(id);
 
-      res.json({
-        msg: "Delete Category success",
-        data: category,
-      });
+      response(res, category, 200, "Delete Category success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());

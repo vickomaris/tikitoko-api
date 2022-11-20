@@ -1,9 +1,10 @@
 const sellerModel = require("../model/seller.model");
 
+const response = require("../helper/response.helper");
+const generateToken = require("../helper/auth.helper");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
-const generateToken = require("../helper/auth.helper");
 
 const sellerController = {
   // auth
@@ -32,10 +33,7 @@ const sellerController = {
 
       delete data.password;
 
-      res.json({
-        msg: "register success",
-        data: data,
-      });
+      response(res, data, 200, "Register Seller success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -72,16 +70,13 @@ const sellerController = {
         name: seller.name,
       });
 
-      res.json({
-        msg: "Login success",
-        data: {token, seller},
-      });
+      response(res, { token, seller }, 200, "Login Seller success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
     }
   },
-  
+
   // store
   getDetail: async (req, res, next) => {
     try {
@@ -93,10 +88,7 @@ const sellerController = {
 
       delete seller.password;
 
-      res.json({
-        msg: "Get Seller Detail success",
-        data: seller,
-      });
+      response(res, seller, 200, "Get Seller success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -133,10 +125,7 @@ const sellerController = {
 
       delete seller.password;
 
-      res.json({
-        msg: "Update Seller success",
-        data: seller
-      })
+      response(res, seller, 200, "Update Seller success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -145,7 +134,7 @@ const sellerController = {
 
   deleteStore: async (req, res, next) => {
     try {
-      const {id} = req.params
+      const { id } = req.params;
 
       const {
         rows: [seller],
@@ -153,17 +142,14 @@ const sellerController = {
 
       delete seller.password;
 
-      await sellerModel.deleteStore(id)
+      await sellerModel.deleteStore(id);
 
-      res.json({
-        msg: "Delete Seller success",
-        data: seller
-      })
+      response(res, seller, 200, "Delete Seller success");
     } catch (error) {
-      console.log(error)
-      next(new createError.InternalServerError())
+      console.log(error);
+      next(new createError.InternalServerError());
     }
-  }
+  },
 };
 
 module.exports = sellerController;

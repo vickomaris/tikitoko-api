@@ -1,5 +1,6 @@
 const addressModel = require("../model/address.model");
 
+const response = require("../helper/response.helper");
 const createError = require("http-errors");
 
 const addressController = {
@@ -18,10 +19,7 @@ const addressController = {
 
       await addressModel.insertAddress(data);
 
-      res.json({
-        msg: "Insert Address success",
-        data: data,
-      });
+      response(res, data, 200, "Insert Address success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -34,10 +32,7 @@ const addressController = {
 
       const { rows: address } = await addressModel.getAddress(id);
 
-      res.json({
-        msg: "Get Address success",
-        data: address,
-      });
+      response(res, address, 200, "Get Address success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -52,10 +47,7 @@ const addressController = {
         rows: [address],
       } = await addressModel.getAddressDetail(id);
 
-      res.json({
-        msg: "Get Address Detail success",
-        data: address,
-      });
+      response(res, address, 200, "Get Address detail success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -84,10 +76,7 @@ const addressController = {
         rows: [address],
       } = await addressModel.getAddressDetail(id);
 
-      res.json({
-        msg: "Update Address success",
-        data: address,
-      });
+      response(res, address, 200, "Update Address success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -104,10 +93,7 @@ const addressController = {
 
       await addressModel.deleteAddress(id);
 
-      res.json({
-        msg: "Delete Address success",
-        data: address,
-      });
+      response(res, address, 200, "Delete Address success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());

@@ -1,9 +1,10 @@
 const buyerModel = require("../model/buyer.model");
 
+const response = require("../helper/response.helper");
+const generateToken = require("../helper/auth.helper");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
-const generateToken = require("../helper/auth.helper");
 
 const buyerController = {
   // auth
@@ -31,10 +32,7 @@ const buyerController = {
 
       delete data.password;
 
-      res.json({
-        msg: "register success",
-        data: data,
-      });
+      response(res, data, 200, "Register success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -71,10 +69,7 @@ const buyerController = {
         name: buyer.name,
       });
 
-      res.json({
-        msg: "Login success",
-        data: {token, buyer},
-      });
+      response(res, { token, buyer }, 200, "Login success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -91,10 +86,7 @@ const buyerController = {
 
       delete buyer.password;
 
-      res.json({
-        msg: "Get Buyer Detail success",
-        data: buyer,
-      });
+      response(res, buyer, 200, "Get Buyer Detail success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -132,10 +124,7 @@ const buyerController = {
 
       delete buyer.password;
 
-      res.json({
-        msg: "Update Buyer success",
-        data: buyer
-      })
+      response(res, buyer, 200, "Update Buyer success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -144,7 +133,7 @@ const buyerController = {
 
   deleteAccount: async (req, res, next) => {
     try {
-      const {id} = req.params
+      const { id } = req.params;
 
       const {
         rows: [buyer],
@@ -152,17 +141,14 @@ const buyerController = {
 
       delete buyer.password;
 
-      await buyerModel.deleteAccount(id)
+      await buyerModel.deleteAccount(id);
 
-      res.json({
-        msg: "Delete Buyer success",
-        data: buyer
-      })
+      response(res, buyer, 200, "Delete Buyer success");
     } catch (error) {
-      console.log(error)
-      next(new createError.InternalServerError())
+      console.log(error);
+      next(new createError.InternalServerError());
     }
-  }
+  },
 };
 
 module.exports = buyerController;

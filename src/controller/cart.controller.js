@@ -1,5 +1,6 @@
 const cartModel = require("../model/cart.model");
 
+const response = require("../helper/response.helper");
 const { v4: uuid } = require("uuid");
 const createError = require("http-errors");
 
@@ -21,13 +22,11 @@ const cartController = {
 
       await cartModel.insertCart(data);
 
-      const {rows : [cart]} = await cartModel.getCartDetail(id)
+      const {
+        rows: [cart],
+      } = await cartModel.getCartDetail(id);
 
-
-      res.json({
-        msg: "Insert Cart success",
-        data: cart,
-      });
+      response(res, cart, 200, "Insert Cart success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -39,10 +38,7 @@ const cartController = {
       const { id } = req.decoded;
       const { rows: cart } = await cartModel.getCart(id);
 
-      res.json({
-        msg: "Get Cart success",
-        data: cart,
-      });
+      response(res, cart, 200, "Get Cart success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -68,10 +64,7 @@ const cartController = {
         rows: [cart],
       } = await cartModel.getCartDetail(id);
 
-      res.json({
-        msg: "Update Cart success",
-        data: cart,
-      });
+      response(res, cart, 200, "Update Cart success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -88,10 +81,7 @@ const cartController = {
 
       await cartModel.deleteCart(id);
 
-      res.json({
-        msg: "Delete Cart success",
-        data: cart,
-      });
+      response(res, cart, 200, "Delete Cart success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());

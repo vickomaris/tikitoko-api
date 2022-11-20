@@ -1,5 +1,6 @@
 const productModel = require("../model/product.model");
 
+const response = require("../helper/response.helper");
 const { v4: uuid } = require("uuid");
 const createError = require("http-errors");
 
@@ -29,10 +30,7 @@ const productController = {
 
       await productModel.insertProduct(data);
 
-      res.json({
-        msg: "Insert Product success",
-        data: data,
-      });
+      response(res, data, 200, "Insert Product success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -75,11 +73,7 @@ const productController = {
         offset
       );
 
-      res.json({
-        msg: "Get Product success",
-        pagination,
-        data: product,
-      });
+      response(res, product, 200, "Get Product success", pagination);
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -94,10 +88,7 @@ const productController = {
         rows: [product],
       } = await productModel.getProductDetail(id);
 
-      res.json({
-        msg: "Get Product Detail success",
-        data: product,
-      });
+      response(res, product, 200, "Get Product Detail success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -133,10 +124,7 @@ const productController = {
         rows: [product],
       } = await productModel.getProductDetail(id);
 
-      res.json({
-        msg: "Update Product success",
-        data: product,
-      });
+      response(res, product, 200, "Update Product success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -153,10 +141,7 @@ const productController = {
 
       await productModel.deleteProduct(id);
 
-      res.json({
-        msg: "Delete Product success",
-        data: product,
-      });
+      response(res, product, 200, "Delete Product success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());

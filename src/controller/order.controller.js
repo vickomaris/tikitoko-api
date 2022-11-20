@@ -1,5 +1,6 @@
 const orderModel = require("../model/order.model");
 
+const response = require("../helper/response.helper");
 const { v4: uuid } = require("uuid");
 const createError = require("http-errors");
 
@@ -26,10 +27,7 @@ const orderController = {
         rows: [order],
       } = await orderModel.getOrderDetail(id);
 
-      res.json({
-        msg: "Insert Order success",
-        data: order,
-      });
+      response(res, order, 200, "Insert Order success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -42,10 +40,7 @@ const orderController = {
 
       const { rows: order } = await orderModel.getOrder(id);
 
-      res.json({
-        msg: "Get Order success",
-        data: order,
-      });
+      response(res, order, 200, "Get Order success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -60,10 +55,7 @@ const orderController = {
         rows: [order],
       } = await orderModel.getOrderDetail(id);
 
-      res.json({
-        msg: "Get Order Detail success",
-        data: order,
-      });
+      response(res, order, 200, "Get Order Detail success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -80,10 +72,7 @@ const orderController = {
         rows: [order],
       } = await orderModel.getOrderDetail(id);
 
-      res.json({
-        msg: "Update Order success",
-        data: order,
-      });
+      response(res, order, 200, "Update Order success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
@@ -100,10 +89,7 @@ const orderController = {
 
       await orderModel.deleteOrder(id);
 
-      res.json({
-        msg: "Insert Order success",
-        data: order,
-      });
+      response(res, order, 200, "Delete Order success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());
