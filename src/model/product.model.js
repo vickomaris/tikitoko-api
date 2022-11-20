@@ -41,21 +41,18 @@ const productModel = {
     return pool.query(query);
   },
 
-  // getProduct: (search, limit, offset) => {
-  //   return pool.query(`
-  //   SELECT seller.name AS seller_name, product.*
-  //   FROM product JOIN seller using (seller_id)
-  //   WHERE product.name ILIKE '%${search}%' AND category_id = ${category}
-  //   LIMIT ${limit} OFFSET ${offset}
-  //   `);
-  // },
-
   countProduct: () => {
     return pool.query(`SELECT COUNT(*) AS total FROM product`);
   },
 
   getProductDetail: (id) => {
-    return pool.query(`SELECT * FROM product WHERE product_id = $1`, [id]);
+    return pool.query(
+      `
+    SELECT seller.name AS seller_name, product.* FROM product JOIN seller using (seller_id)
+     WHERE product_id = $1
+    `,
+      [id]
+    );
   },
 
   updateProduct: (data) => {
