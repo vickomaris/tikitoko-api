@@ -67,7 +67,7 @@ CREATE TABLE cart (
     updated_at TIMESTAMP
 );
 
-CREATE TABLE order (
+CREATE TABLE orders (
     order_id UUID PRIMARY KEY,
     cart_id UUID REFERENCES cart(cart_id),
     buyer_id UUID REFERENCES buyer(buyer_id),
@@ -75,6 +75,7 @@ CREATE TABLE order (
     total INTEGER NOT NULL,
     payment INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
 );
 
 CREATE TABLE address (
