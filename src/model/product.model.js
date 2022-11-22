@@ -41,6 +41,13 @@ const productModel = {
     return pool.query(query);
   },
 
+  getOwnProduct: (id, search, sortBy, sortOrder, limit, offset) => {
+    return pool.query(`
+    SELECT * FROM product WHERE name ILIKE '%${search}%' AND seller_id = '${id}'
+    ORDER BY ${sortBy} ${sortOrder} LIMIT ${limit} OFFSET ${offset}
+    `, );
+  },
+
   countProduct: () => {
     return pool.query(`SELECT COUNT(*) AS total FROM product`);
   },

@@ -80,6 +80,48 @@ const productController = {
     }
   },
 
+  getOwnProduct: async (req, res, next) => {
+    try {
+      const {id} = req.decoded;
+
+      const search = req.query.search || "";
+      const sortBy = req.query.sortby || "product_id";
+      const sortOrder = req.query.order || "asc";
+
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 6;
+      const offset = (page - 1) * limit;
+
+      const {
+        rows: [count],
+      } = await productModel.countProduct();
+
+      const totalData = parseInt(count.total);
+      const totalPage = Math.ceil(totalData / limit);
+
+      const pagination = {
+        currentPage: page,
+        limit,
+        totalData,
+        totalPage,
+      };
+
+      const { rows: product } = await productModel.getOwnProduct(
+        id,
+        search,
+        sortBy,
+        sortOrder,
+        limit,
+        offset
+      );
+
+      response(res, product, 200, "Get Own Product success", pagination);
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
   getProductDetail: async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -117,7 +159,7 @@ const productController = {
         image,
         date,
       };
-
+      
       await productModel.updateProduct(data);
 
       const {

@@ -22,6 +22,18 @@ const orderModel = {
     );
   },
 
+  getOwnOrder: (id) => {
+    return pool.query(
+      `
+    SELECT orders.order_id, orders.status, product.name, product.price, cart.qty,
+    product.image, (product.price * cart.qty) AS total, buyer.name AS buyer_name
+    FROM orders JOIN buyer USING (buyer_id) 
+    JOIN (cart JOIN (product JOIN seller USING (seller_id)) USING (product_id)) 
+    USING (cart_id) WHERE product.seller_id = $1`,
+      [id]
+    );
+  },
+
   getOrderDetail: (id) => {
     return pool.query(
       `

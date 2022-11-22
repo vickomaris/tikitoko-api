@@ -1,4 +1,5 @@
 const orderModel = require("../model/order.model");
+const cartModel = require("../model/cart.model");
 
 const response = require("../helper/response.helper");
 const { v4: uuid } = require("uuid");
@@ -21,7 +22,7 @@ const orderController = {
 
       await orderModel.insertOrder(data);
 
-      // delete cart
+      await cartModel.checkoutCart(cid)
 
       const {
         rows: [order],
@@ -41,6 +42,19 @@ const orderController = {
       const { rows: order } = await orderModel.getOrder(id);
 
       response(res, order, 200, "Get Order success");
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
+  getOwnOrder: async (req, res, next) => {
+    try {
+      const { id } = req.decoded;
+
+      const { rows: order } = await orderModel.getOwnOrder(id);
+
+      response(res, order, 200, "Get Own Order success");
     } catch (error) {
       console.log(error);
       next(new createError.InternalServerError());

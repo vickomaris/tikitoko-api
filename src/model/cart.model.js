@@ -23,11 +23,14 @@ const cartModel = {
   },
 
   getCartDetail: (id) => {
-    return pool.query(`
+    return pool.query(
+      `
     SELECT seller.name AS seller_name, product.name, product.price, product.image, cart.*
     FROM cart JOIN (product JOIN seller USING (seller_id)) USING (product_id)
     WHERE cart_id = $1
-    `, [id]);
+    `,
+      [id]
+    );
   },
 
   updateCart: (data) => {
@@ -35,12 +38,15 @@ const cartModel = {
       `
     UPDATE cart SET
     qty = COALESCE($1, qty),
-    status = COALESCE($2, status),
-    updated_at = COALESCE($3, updated_at)
-    WHERE cart_id = $4
+    updated_at = COALESCE($2, updated_at)
+    WHERE cart_id = $3
     `,
-      [data.qty, data.status, data.date, data.id]
+      [data.qty, data.date, data.id]
     );
+  },
+
+  checkoutCart: (id) => {
+    return pool.query(`UPDATE cart SET status = 1 WHERE cart_id = $1`, [id]);
   },
 
   deleteCart: (id) => {

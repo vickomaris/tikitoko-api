@@ -48,13 +48,12 @@ const cartController = {
   updateCart: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { qty, status } = req.body;
+      const { qty } = req.body;
       const date = new Date();
 
       const data = {
         id,
         qty,
-        status,
         date,
       };
 
