@@ -1,12 +1,19 @@
 require("dotenv").config();
 
 const express = require("express");
+const { Server } = require("socket.io");
+const http = require("http");
+const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const morgan = require("morgan");
 const createError = require("http-errors");
 const path = require("path");
+const moment = require("moment");
+moment.locale("id");
+
+const messageModel = require("./src/model/message.model")
 
 const main = require("./src/router/index.routes");
 
@@ -43,10 +50,62 @@ app.use((err, req, res) => {
   const code = err.status || 500;
 
   res.status(code).json({
-    message: msg
+    message: msg,
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`my life is running on ${PORT}`);
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+
+io.use((socket, next) => {
+  const token = socket.handshake.query.token;
+  jwt.verify(token, process.env.SECRET_KEY_JWT, (err, decoded) => {
+    if (err) {
+      if (err.name === "JsonWebTokenError") {
+        next(createError(400, "token is invalid"));
+      } else if (err.name === "TokenExpiredError") {
+        next(createError(400, "token is expired"));
+      } else {
+        next(createError(400, "error occured"));
+      }
+    }
+    socket.userId = decoded.id;
+    socket.join(decoded.id);
+    next();
+  });
+});
+
+io.on("connection", (socket) => {
+  console.log(`device connected : ${socket.id} - ${socket.userId}`);
+
+  socket.on("private-msg", (data, callback) => {
+    const newMessage = {
+      receiver: data.receiver,
+      message: data.msg,
+      sender: socket.userId,
+      date: moment(new Date()).format("LT"),
+    };
+
+    console.log(newMessage);
+
+    callback(newMessage);
+
+    messageModel.newMessage(newMessage).then(() => {
+      socket.broadcast
+        .to(data.receiver)
+        .emit("private-msg-BE", { ...newMessage, date: new Date() });
+    });
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`device disconnected : ${socket.id}`);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`my life running on port ${PORT}`);
 });

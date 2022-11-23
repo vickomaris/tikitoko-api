@@ -76,6 +76,17 @@ const buyerController = {
     }
   },
 
+  getBuyer: async (req, res, next) => {
+    try {
+      const { rows: buyer } = await buyerModel.getBuyer();
+
+      response(res, buyer, 200, "Get Buyer success");
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
   getDetail: async (req, res, next) => {
     try {
       const { id } = req.params;

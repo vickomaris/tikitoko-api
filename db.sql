@@ -31,7 +31,7 @@ CREATE TABLE message (
     message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     sender VARCHAR NOT NULL,
     receiver VARCHAR NOT NULL,
-    body TEXT,
+    message TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

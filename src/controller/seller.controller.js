@@ -78,6 +78,17 @@ const sellerController = {
   },
 
   // store
+  getStore: async (req, res, next) => {
+    try {
+      const { rows: store } = await sellerModel.getStore();
+
+      response(res, store, 200, "Get Store success");
+    } catch (error) {
+      console.log(error);
+      next(new createError.InternalServerError());
+    }
+  },
+
   getDetail: async (req, res, next) => {
     try {
       const { id } = req.params;

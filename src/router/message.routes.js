@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-// router
-// .get
-// .post
-// .put
-// .delete
+const {jwtAuth} = require("../middleware/auth.middleware");
+const { getMessage } = require("../controller/message.controller");
 
-module.exports = router
+router
+.get("/:id", jwtAuth, getMessage);
+
+module.exports = router;

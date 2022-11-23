@@ -16,6 +16,10 @@ const buyerModel = {
     return pool.query(`SELECT * FROM buyer WHERE email = $1`, [email]);
   },
 
+  getBuyer: () => {
+    return pool.query(`SELECT * FROM buyer`);
+  },
+
   getDetail: (id) => {
     return pool.query(`SELECT * FROM buyer WHERE buyer_id = $1`, [id]);
   },
@@ -47,8 +51,8 @@ const buyerModel = {
   },
 
   deleteAccount: (id) => {
-    return pool.query(`DELETE FROM buyer WHERE buyer_id = $1`, [id])
-  }
+    return pool.query(`DELETE FROM buyer WHERE buyer_id = $1`, [id]);
+  },
 };
 
 module.exports = buyerModel;

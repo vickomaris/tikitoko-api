@@ -28,6 +28,6 @@ router
 .use("/address", addressRoutes)
 
 // chat
-// .use("/message", messageRoutes)
+.use("/message", messageRoutes)
 
 module.exports = router;
