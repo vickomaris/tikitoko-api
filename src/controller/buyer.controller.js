@@ -5,6 +5,7 @@ const generateToken = require("../helper/auth.helper");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
+const cloudinary = require("../helper/cloudinary");
 
 const buyerController = {
   // auth
@@ -33,8 +34,8 @@ const buyerController = {
       delete data.password;
 
       response(res, data, 200, "Register success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -70,8 +71,8 @@ const buyerController = {
       });
 
       response(res, { token, buyer }, 200, "Login success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -81,8 +82,8 @@ const buyerController = {
       const { rows: buyer } = await buyerModel.getBuyer();
 
       response(res, buyer, 200, "Get Buyer success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -98,8 +99,8 @@ const buyerController = {
       delete buyer.password;
 
       response(res, buyer, 200, "Get Buyer Detail success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -113,7 +114,7 @@ const buyerController = {
       let avatar = null;
 
       if (req.file) {
-        avatar = `http://${req.get("host")}/ava/${req.file.filename}`;
+        avatar = await cloudinary.uploader.upload(req.file.path);
       }
 
       const data = {
@@ -123,7 +124,7 @@ const buyerController = {
         phone,
         gender,
         birthdate,
-        avatar,
+        file: avatar.url,
         date,
       };
 
@@ -136,8 +137,8 @@ const buyerController = {
       delete buyer.password;
 
       response(res, buyer, 200, "Update Buyer success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -155,8 +156,8 @@ const buyerController = {
       await buyerModel.deleteAccount(id);
 
       response(res, buyer, 200, "Delete Buyer success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

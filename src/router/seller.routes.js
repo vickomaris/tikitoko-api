@@ -1,6 +1,6 @@
 const express = require("express");
 const { register, login, getDetail, updateStore, deleteStore, getStore } = require("../controller/seller.controller");
-const { userUpload } = require("../middleware/multer.middleware");
+const upload = require("../middleware/multer.middleware");
 const router = express.Router();
 
 router
@@ -8,7 +8,7 @@ router
 .post("/login", login)
 .get("/", getStore)
 .get("/:id", getDetail)
-.put("/:id", userUpload.single("avatar"), updateStore)
+.put("/:id", upload.single("avatar"), updateStore)
 .delete("/:id", deleteStore)
 
 module.exports = router

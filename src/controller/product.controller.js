@@ -3,6 +3,7 @@ const productModel = require("../model/product.model");
 const response = require("../helper/response.helper");
 const { v4: uuid } = require("uuid");
 const createError = require("http-errors");
+const cloudinary = require("../helper/cloudinary");
 
 const productController = {
   insertProduct: async (req, res, next) => {
@@ -13,7 +14,7 @@ const productController = {
       let image = null;
 
       if (req.file) {
-        image = `http://${req.get("host")}/p-img/${req.file.filename}`;
+        image = await cloudinary.uploader.upload(req.file.path);
       }
 
       const data = {
@@ -25,14 +26,14 @@ const productController = {
         stock,
         condition,
         description,
-        image,
+        file: image.url,
       };
 
       await productModel.insertProduct(data);
 
       response(res, data, 200, "Insert Product success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -74,15 +75,15 @@ const productController = {
       );
 
       response(res, product, 200, "Get Product success", pagination);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
 
   getOwnProduct: async (req, res, next) => {
     try {
-      const {id} = req.decoded;
+      const { id } = req.decoded;
 
       const search = req.query.search || "";
       const sortBy = req.query.sortby || "product_id";
@@ -116,8 +117,8 @@ const productController = {
       );
 
       response(res, product, 200, "Get Own Product success", pagination);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -131,8 +132,8 @@ const productController = {
       } = await productModel.getProductDetail(id);
 
       response(res, product, 200, "Get Product Detail success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -145,7 +146,7 @@ const productController = {
       let image = null;
 
       if (req.file) {
-        image = `http://${req.get("host")}/p-img/${req.file.filename}`;
+        image = await cloudinary.uploader.upload(req.file.path);
       }
 
       const data = {
@@ -156,10 +157,10 @@ const productController = {
         stock,
         condition,
         description,
-        image,
+        file: image.url,
         date,
       };
-      
+
       await productModel.updateProduct(data);
 
       const {
@@ -167,8 +168,8 @@ const productController = {
       } = await productModel.getProductDetail(id);
 
       response(res, product, 200, "Update Product success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -184,8 +185,8 @@ const productController = {
       await productModel.deleteProduct(id);
 
       response(res, product, 200, "Delete Product success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

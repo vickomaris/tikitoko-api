@@ -17,11 +17,18 @@ const buyerModel = {
   },
 
   getBuyer: () => {
-    return pool.query(`SELECT * FROM buyer`);
+    return pool.query(
+      `SELECT buyer.*, address.city, address.residence, address.postcode 
+      FROM buyer LEFT JOIN address USING (buyer_id)`
+    );
   },
 
   getDetail: (id) => {
-    return pool.query(`SELECT * FROM buyer WHERE buyer_id = $1`, [id]);
+    return pool.query(
+      `SELECT buyer.*, address.city, address.residence, address.postcode 
+      FROM buyer LEFT JOIN address USING (buyer_id) WHERE buyer_id = $1`,
+      [id]
+    );
   },
 
   updateAccount: (data) => {
@@ -43,7 +50,7 @@ const buyerModel = {
         data.phone,
         data.gender,
         data.birthdate,
-        data.avatar,
+        data.file,
         data.date,
         data.id,
       ]

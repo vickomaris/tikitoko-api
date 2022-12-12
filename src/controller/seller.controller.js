@@ -5,6 +5,7 @@ const generateToken = require("../helper/auth.helper");
 const { v4: uuid } = require("uuid");
 const { hash, compare } = require("bcryptjs");
 const createError = require("http-errors");
+const cloudinary = require("../helper/cloudinary");
 
 const sellerController = {
   // auth
@@ -34,8 +35,8 @@ const sellerController = {
       delete data.password;
 
       response(res, data, 200, "Register Seller success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -71,8 +72,8 @@ const sellerController = {
       });
 
       response(res, { token, seller }, 200, "Login Seller success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -83,8 +84,8 @@ const sellerController = {
       const { rows: store } = await sellerModel.getStore();
 
       response(res, store, 200, "Get Store success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -100,8 +101,8 @@ const sellerController = {
       delete seller.password;
 
       response(res, seller, 200, "Get Seller success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -115,7 +116,7 @@ const sellerController = {
       let avatar = null;
 
       if (req.file) {
-        avatar = `http://${req.get("host")}/ava/${req.file.filename}`;
+        avatar = await cloudinary.uploader.upload(req.file.path);
       }
 
       const data = {
@@ -124,7 +125,7 @@ const sellerController = {
         email,
         phone,
         description,
-        avatar,
+        file : avatar.url,
         date,
       };
 
@@ -137,8 +138,8 @@ const sellerController = {
       delete seller.password;
 
       response(res, seller, 200, "Update Seller success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -156,8 +157,8 @@ const sellerController = {
       await sellerModel.deleteStore(id);
 
       response(res, seller, 200, "Delete Seller success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

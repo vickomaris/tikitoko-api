@@ -42,7 +42,7 @@ const sellerModel = {
         data.email,
         data.phone,
         data.description,
-        data.avatar,
+        data.file,
         data.date,
         data.id,
       ]

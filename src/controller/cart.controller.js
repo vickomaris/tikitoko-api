@@ -27,8 +27,8 @@ const cartController = {
       } = await cartModel.getCartDetail(id);
 
       response(res, cart, 200, "Insert Cart success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -39,8 +39,8 @@ const cartController = {
       const { rows: cart } = await cartModel.getCart(id);
 
       response(res, cart, 200, "Get Cart success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -64,8 +64,8 @@ const cartController = {
       } = await cartModel.getCartDetail(id);
 
       response(res, cart, 200, "Update Cart success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -81,8 +81,8 @@ const cartController = {
       await cartModel.deleteCart(id);
 
       response(res, cart, 200, "Delete Cart success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

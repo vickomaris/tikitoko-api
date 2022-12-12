@@ -6,7 +6,7 @@ const categoryModel = {
       `
         INSERT INTO category (name, image)
         VALUES ($1, $2)`,
-      [data.name, data.image]
+      [data.name, data.file]
     );
   },
 
@@ -26,7 +26,7 @@ const categoryModel = {
     image = COALESCE($2, image)
     WHERE category_id = $3
     `,
-      [data.name, data.image, data.id]
+      [data.name, data.file, data.id]
     );
   },
 

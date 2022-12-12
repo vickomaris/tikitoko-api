@@ -20,8 +20,8 @@ const addressController = {
       await addressModel.insertAddress(data);
 
       response(res, data, 200, "Insert Address success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -33,8 +33,8 @@ const addressController = {
       const { rows: address } = await addressModel.getAddress(id);
 
       response(res, address, 200, "Get Address success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -48,8 +48,8 @@ const addressController = {
       } = await addressModel.getAddressDetail(id);
 
       response(res, address, 200, "Get Address detail success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -77,8 +77,8 @@ const addressController = {
       } = await addressModel.getAddressDetail(id);
 
       response(res, address, 200, "Update Address success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -94,8 +94,8 @@ const addressController = {
       await addressModel.deleteAddress(id);
 
       response(res, address, 200, "Delete Address success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

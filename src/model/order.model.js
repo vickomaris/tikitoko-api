@@ -49,6 +49,10 @@ const orderModel = {
     return pool.query(`UPDATE orders SET status = 1 WHERE order_id = $1`, [id]);
   },
 
+  cancelOrder: (id) => {
+    return pool.query(`UPDATE orders SET status = 2 WHERE order_id = $1`, [id]);
+  },
+
   deleteOrder: (id) => {
     return pool.query(`DELETE FROM orders WHERE order_id = $1`, [id]);
   },

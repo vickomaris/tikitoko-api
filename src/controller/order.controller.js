@@ -29,8 +29,8 @@ const orderController = {
       } = await orderModel.getOrderDetail(id);
 
       response(res, order, 200, "Insert Order success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -42,8 +42,8 @@ const orderController = {
       const { rows: order } = await orderModel.getOrder(id);
 
       response(res, order, 200, "Get Order success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -55,8 +55,8 @@ const orderController = {
       const { rows: order } = await orderModel.getOwnOrder(id);
 
       response(res, order, 200, "Get Own Order success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },
@@ -87,8 +87,25 @@ const orderController = {
       } = await orderModel.getOrderDetail(id);
 
       response(res, order, 200, "Update Order success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      next(new createError.InternalServerError());
+    }
+  },
+
+  cancelOrder: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      await orderModel.cancelOrder(id);
+
+      const {
+        rows: [order],
+      } = await orderModel.getOrderDetail(id);
+
+      response(res, order, 200, "Update Order success");
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

@@ -15,8 +15,8 @@ const messageController = {
       );
 
       response(res, messages, 200, "Get Messages success");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       next(new createError.InternalServerError());
     }
   },

@@ -6,14 +6,14 @@ const {
   updateCategory,
   deleteCategory,
 } = require("../controller/category.controller");
-const { categoryUpload } = require("../middleware/multer.middleware");
+const upload = require("../middleware/multer.middleware");
 const router = express.Router();
 
 router
-  .post("/", categoryUpload.single("image"), insertCategory)
+  .post("/", upload.single("image"), insertCategory)
   .get("/", getCategory)
   .get("/:id", getCategoryDetail)
-  .put("/:id", categoryUpload.single("image"), updateCategory)
+  .put("/:id", upload.single("image"), updateCategory)
   .delete("/:id", deleteCategory);
 
 module.exports = router;

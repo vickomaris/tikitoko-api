@@ -16,7 +16,7 @@ const productModel = {
         data.stock,
         data.condition,
         data.description,
-        data.image,
+        data.file,
       ]
     );
   },
@@ -83,7 +83,7 @@ const productModel = {
         data.stock,
         data.condition,
         data.description,
-        data.image,
+        data.file,
         data.date,
         data.id,
       ]
