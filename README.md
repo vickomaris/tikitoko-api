@@ -118,11 +118,11 @@ Contributions are what make the open source community such an amazing place to b
 
 <!-- Related Projects -->
 ## Related Project
-:rocket: [`Tikitoko (Frontend)`](https://github.com/brndnwjy/mamarecipe-app)
+:rocket: [`Tikitoko (Frontend)`](https://github.com/brndnwjy/tikitoko-app)
 
 :rocket: [`Tikitoko App Demo`](https://tikitoko.netlify.app)
 
-:rocket: [`Tikitoko (Admin)`](https://github.com/brndnwjy/mamarecipe-admin)
+:rocket: [`Tikitoko (Admin)`](https://github.com/brndnwjy/tikitoko-admin)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
