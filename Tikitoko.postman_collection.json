@@ -1,0 +1,1274 @@
+{
+	"info": {
+		"_postman_id": "ecadb439-bc19-4276-aaeb-0d85b7c167e9",
+		"name": "Tikitoko",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buyer",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brandon\",\r\n    \"email\": \"brandon@mail.com\",\r\n    \"password\": \"brandon123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/buyer/register",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"buyer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"brandon@mail.com\",\r\n    \"password\": \"brandon123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/v1/buyer/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"v1",
+								"buyer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Brandon Nababan",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "085644563827",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "birthdate",
+									"value": "2002-12-25",
+									"type": "default"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/brndnwjy/Downloads/WhatsApp Image 2022-10-08 at 14.12.36.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/buyer/3b62179c-d5f6-4393-9c08-24f0efca84ef",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"buyer",
+								"3b62179c-d5f6-4393-9c08-24f0efca84ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/buyer/3b62179c-d5f6-4393-9c08-24f0efca84ef",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"buyer",
+								"3b62179c-d5f6-4393-9c08-24f0efca84ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/buyer/59da5be3-80d1-4545-8a75-29dc9827716e",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"buyer",
+								"59da5be3-80d1-4545-8a75-29dc9827716e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Pijar Shop\",\r\n    \"email\": \"pijarshop@mail.com\",\r\n    \"phone\": \"085245637756\",\r\n    \"password\": \"pijarshop123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/seller/register",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"seller",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pijarshop@mail.com\",\r\n    \"password\": \"pijarshop123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/seller/login",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"seller",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/seller/2f164aaa-515e-48a0-bef8-102b774361d8",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"seller",
+								"2f164aaa-515e-48a0-bef8-102b774361d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Store",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/seller/2f164aaa-515e-48a0-bef8-102b774361d8",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"seller",
+								"2f164aaa-515e-48a0-bef8-102b774361d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/seller/2f164aaa-515e-48a0-bef8-102b774361d8",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"seller",
+								"2f164aaa-515e-48a0-bef8-102b774361d8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Insert Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Shoes",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/brndnwjy/Downloads/shoes.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/category",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/category",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/category/2",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Makanan",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/brndnwjy/Downloads/tempura.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/category/2",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/category/2",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Insert Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMTY0YWFhLTUxNWUtNDhhMC1iZWY4LTEwMmI3NzQzNjFkOCIsIm5hbWUiOiJQaWphcnNob3AgUmVkdXgiLCJpYXQiOjE2Njg4NTQyNzd9.Bur4imHEHQIpWYqF52FqCmyCxTF0V_wmk9Kv_pqSo2w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cid",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "Nasi Goreng",
+									"type": "default"
+								},
+								{
+									"key": "stock",
+									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "15000",
+									"type": "default"
+								},
+								{
+									"key": "condition",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Nasi goreng gila super pedas",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/brndnwjy/Downloads/nasi-goreng-lagi.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product?category=3",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product"
+							],
+							"query": [
+								{
+									"key": "seller",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Goreng",
+									"disabled": true
+								},
+								{
+									"key": "sortby",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Own Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMTY0YWFhLTUxNWUtNDhhMC1iZWY4LTEwMmI3NzQzNjFkOCIsIm5hbWUiOiJQaWphcnNob3AgUmVkdXgiLCJpYXQiOjE2NjkwOTYzNjV9.LVIz-tW-2ah2OFpd3uu46xb0xn81M94bEGDbRT8OUL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product/myproduct",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product",
+								"myproduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product/942391a6-72d0-4732-bd94-1419a8ee8e28",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product",
+								"942391a6-72d0-4732-bd94-1419a8ee8e28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cid",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "22000",
+									"type": "default"
+								},
+								{
+									"key": "stock",
+									"value": "100",
+									"type": "default"
+								},
+								{
+									"key": "condition",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product/8402aa82-6361-4890-9f2d-5d10991f8399",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product",
+								"8402aa82-6361-4890-9f2d-5d10991f8399"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/product/0111db0f-8446-4b0a-8f71-b151c6a5d84a",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"product",
+								"0111db0f-8446-4b0a-8f71-b151c6a5d84a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Insert Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2OTA5NzI5OH0.2f5hzzIivgcEN7aggYDM-iLgeX8qOKC6t2G8HQEz0u0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"8402aa82-6361-4890-9f2d-5d10991f8399\",\r\n    \"qty\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/cart",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2ODg4MTEzMH0.g3bZ2L3OGB0n75Oix8TKqwYGXyItzQhRUFo4tDMCvI4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/cart",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2ODg4MTEzMH0.g3bZ2L3OGB0n75Oix8TKqwYGXyItzQhRUFo4tDMCvI4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qty\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/cart/749f74d4-ecde-4a35-a259-23141857e86c",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"cart",
+								"749f74d4-ecde-4a35-a259-23141857e86c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/cart/749f74d4-ecde-4a35-a259-23141857e86c",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"cart",
+								"749f74d4-ecde-4a35-a259-23141857e86c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Insert Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2ODg4MTEzMH0.g3bZ2L3OGB0n75Oix8TKqwYGXyItzQhRUFo4tDMCvI4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\": \"Rumah Utama\",\r\n    \"recipient\": \"Brandon\",\r\n    \"phone\": \"08665748736\",\r\n    \"residence\": \"Jl. Bahagia No.5\",\r\n    \"city\": \"Jakarta\",\r\n    \"postcode\": \"11820\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/address",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2ODg4MTEzMH0.g3bZ2L3OGB0n75Oix8TKqwYGXyItzQhRUFo4tDMCvI4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/address",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/address/1",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"address",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipient\": \"Brandon Wijaya\",\r\n    \"residence\": \"Jl. Bahagia No.15\",\r\n    \"city\": \"Jakarta Utara\",\r\n    \"postcode\": \"11821\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/address/1",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"address",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/address/1",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"address",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Insert Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2OTA5Njk2Nn0.WaCeoqH6qJUDTeBHI0sKrg2enyRXleJzExkNmCuJYXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cid\": \"f299b15a-e8f5-45c0-b6d4-307c43a5934e\",\r\n    \"total\": 70000,\r\n    \"payment\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiNjIxNzljLWQ1ZjYtNDM5My05YzA4LTI0ZjBlZmNhODRlZiIsIm5hbWUiOiJCcmFuZG9uIFdpamF5YSIsImlhdCI6MTY2ODg4MTEzMH0.g3bZ2L3OGB0n75Oix8TKqwYGXyItzQhRUFo4tDMCvI4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Own Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmMTY0YWFhLTUxNWUtNDhhMC1iZWY4LTEwMmI3NzQzNjFkOCIsIm5hbWUiOiJQaWphcnNob3AgUmVkdXgiLCJpYXQiOjE2NjkwOTYzNjV9.LVIz-tW-2ah2OFpd3uu46xb0xn81M94bEGDbRT8OUL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order/myorder",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order",
+								"myorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order/cc1bcb4e-2ac0-4002-a789-3bda2ad214e7",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order",
+								"cc1bcb4e-2ac0-4002-a789-3bda2ad214e7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order/59a9dc04-5ee9-49ad-a0e9-97b9ab95450d",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order",
+								"59a9dc04-5ee9-49ad-a0e9-97b9ab95450d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://tikitoko.up.railway.app/v1/order/59a9dc04-5ee9-49ad-a0e9-97b9ab95450d",
+							"protocol": "https",
+							"host": [
+								"tikitoko",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"v1",
+								"order",
+								"59a9dc04-5ee9-49ad-a0e9-97b9ab95450d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
