@@ -32,7 +32,7 @@
 
 <!-- About The Project -->
 ## About The Project
-RESTful API made with Node.js and Express.js for Mamarecipe App.
+RESTful API made with Node.js and Express.js for Tikitoko App.
 
 ### Built With
 This app was built with some technologies below:
@@ -121,6 +121,8 @@ Contributions are what make the open source community such an amazing place to b
 :rocket: [`Tikitoko (Frontend)`](https://github.com/brndnwjy/mamarecipe-app)
 
 :rocket: [`Tikitoko App Demo`](https://tikitoko.netlify.app)
+
+:rocket: [`Tikitoko (Admin)`](https://github.com/brndnwjy/mamarecipe-admin)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
